@@ -199,7 +199,7 @@ const Page = () => {
         <div className="z-20 bg-gray-0 h-[40px] w-[100vw] flex pad:hidden items-center" />
         <div className="flex z-10 flex-shrink-0 pad:hidden w-full mb:w-[328px] pad:w-full h-2 bg-gray-5 mx-auto" />
         <div className="z-20 bg-gray-0 h-[24px] w-[100vw] flex pad:hidden items-center" />
-        <div className="flex z-10 bg-gray-0 pad:hidden dt:flex flex-col w-[100%] px-4 mb:px-0 mb:w-[328px] pad:ml-[164px] pad:mt-[120px] h-[282px] mx-auto">
+        <div className="flex z-10 bg-gray-0 pad:hidden dt:flex flex-col w-[100%] px-4 mb:px-0 mb:w-[328px] pad:ml-[164px] h-[282px] pad:mt-[78px] pad:h-full mx-auto">
           <p className="text-[16px] pad:text-[18px] font-medium left-9 text-primary-60 pad:text-primary-50 h-[27px]">
             공연장 위치
           </p>
