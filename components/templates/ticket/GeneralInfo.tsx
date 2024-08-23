@@ -67,8 +67,11 @@ const GeneralInfo: React.FC<GeneralInfoProps> = ({
     ]);
     setNamesArray((prevNamesArray) => [...prevNamesArray, '']);
     setPhonesArray((prevPhonesArray) => [...prevPhonesArray, '']);
-    setMember((prevMember) => prevMember + 1);
-    localStorage.setItem('member', member.toString());
+    setMember((prevMember) => {
+      const newMember = prevMember + 1;
+      localStorage.setItem('member', newMember.toString());
+      return newMember;
+    });
   }, [setMember]);
 
   const removeCompanion = useCallback(
@@ -91,8 +94,11 @@ const GeneralInfo: React.FC<GeneralInfoProps> = ({
         return updatedCompanions;
       });
 
-      setMember((prevMember) => Math.max(prevMember - 1, 1));
-      localStorage.setItem('member', member.toString());
+      setMember((prevMember) => {
+        const newMember = Math.max(prevMember - 1, 1);
+        localStorage.setItem('member', newMember.toString());
+        return newMember;
+      });
     },
     [setMember]
   );

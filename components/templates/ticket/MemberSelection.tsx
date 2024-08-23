@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import Image from 'next/image';
 
 type MemberSelectionProps = {
@@ -19,13 +20,19 @@ const MemberSelection: React.FC<MemberSelectionProps> = ({
   setMember,
 }) => {
   const handleIncrement = () => {
-    localStorage.setItem('member', member.toString());
-    setMember((prevMember) => (prevMember < max ? prevMember + 1 : prevMember));
+    setMember((prevMember) => {
+      const newMember = prevMember < max ? prevMember + 1 : prevMember;
+      localStorage.setItem('member', newMember.toString());
+      return newMember;
+    });
   };
 
   const handleDecrement = () => {
-    localStorage.setItem('member', member.toString());
-    setMember((prevMember) => (prevMember > min ? prevMember - 1 : prevMember));
+    setMember((prevMember) => {
+      const newMember = prevMember > min ? prevMember - 1 : prevMember;
+      localStorage.setItem('member', newMember.toString());
+      return newMember;
+    });
   };
 
   const finalAmount = 5000 * member;
