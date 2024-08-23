@@ -164,6 +164,7 @@ const Page = () => {
           <div className="flex flex-row mt-4 pad:mt-6 text-[16px] pad:text-[18px] leading-9 font-normal">
             <p className="text-gray-40 w-7 pad:w-8 h-7">가격</p>
             <div className="ml-6 flex flex-col">
+              {/*
               <div className="flex flex-row items-start h-7">
                 <p className="text-gray-90 w-[74px] pad:w-[83px] ">
                   신입생 티켓
@@ -176,6 +177,8 @@ const Page = () => {
                 </p>
               </div>
               <div className="flex flex-row items-start h-7 mt-2 pad:mt-5">
+              */}
+              <div className="flex flex-row items-start h-7 mb-9 pad:mb-12">
                 <p className="text-gray-90 w-[60px] pad:w-[67px]">일반 티켓</p>
                 <p className="text-primary-50 w-[58px] pad:w-[66px] ml-10 font-semibold">
                   {information.tickets.general.price}
