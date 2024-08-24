@@ -1,4 +1,3 @@
-'use client';
 import { authInstance } from '@/api/auth/axios';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -10,6 +9,7 @@ import { useRecoilState } from 'recoil';
 import { totalTicket } from '@/atoms';
 import { useRouter } from 'next/navigation';
 import { createTheme, ThemeProvider } from '@mui/material';
+import Image from 'next/image';
 
 const theme = createTheme({
   components: {
@@ -110,6 +110,18 @@ const TicketLists = ({ type }: { type: string }) => {
     }
   }, [type]);
 
+  const copyReservationId = (reservation_id: string) => {
+    navigator.clipboard.writeText(reservation_id).then(() => {
+      alert('예매번호가 복사되었습니다!');
+    });
+  };
+
+  const copyPhoneNum = (phone_num: string) => {
+    navigator.clipboard.writeText(phone_num).then(() => {
+      alert('전화번호가 복사되었습니다!');
+    });
+  };
+
   return (
     <ThemeProvider theme={theme}>
       {ticketList.map((ticket, index) => (
@@ -156,6 +168,18 @@ const TicketLists = ({ type }: { type: string }) => {
             >
               {ticket.reservation_id}
             </Typography>
+            <div
+              onClick={() => copyReservationId(ticket.reservation_id)}
+              className="flex items-center justify-start cursor-pointer"
+            >
+              <Image
+                src="/image/ticket/copy.svg"
+                width={20}
+                height={20}
+                alt="copy"
+                className="w-4 h-4 pad:w-5 pad:h-5"
+              />
+            </div>
             <Typography
               component="div"
               className="min-w-[120px] text-center text-base font-medium text-gray-60"
@@ -168,6 +192,18 @@ const TicketLists = ({ type }: { type: string }) => {
             >
               {ticket.phone_num}
             </Typography>
+            <div
+              onClick={() => copyPhoneNum(ticket.phone_num)}
+              className="flex items-center justify-start cursor-pointer"
+            >
+              <Image
+                src="/image/ticket/copy.svg"
+                width={20}
+                height={20}
+                alt="copy"
+                className="w-4 h-4 pad:w-5 pad:h-5"
+              />
+            </div>
             <Typography
               component="div"
               className="min-w-[120px] text-center text-base font-medium text-gray-60"
@@ -200,12 +236,24 @@ const TicketLists = ({ type }: { type: string }) => {
             <Typography component="div">
               {members[index] &&
                 members[index].map((member) => (
-                  <div key={member.id} className="flex gap-14">
-                    <div className="text-base font-medium text-gray-60 pb-3">
+                  <div key={member.id} className="flex items-center pb-3">
+                    <div className="text-base font-medium text-gray-60">
                       이름 : {member.name}
                     </div>
-                    <div className="text-base font-medium text-gray-60">
+                    <div className="text-base ml-14 font-medium text-gray-60">
                       전화번호 : {member.phone_num}
+                    </div>
+                    <div
+                      onClick={() => copyPhoneNum(member.phone_num)}
+                      className="ml-4 flex items-center justify-start cursor-pointer"
+                    >
+                      <Image
+                        src="/image/ticket/copy.svg"
+                        width={20}
+                        height={20}
+                        alt="copy"
+                        className="w-4 h-4 pad:w-5 pad:h-5"
+                      />
                     </div>
                   </div>
                 ))}
