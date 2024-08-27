@@ -124,7 +124,7 @@ const TicketLists = ({ type }: { type: string }) => {
       } catch (error) {
         console.log(error);
       }
-    } else if (status === '취소 완료') {
+    } else if (status === '예매 취소') {
       try {
         const response = await authInstance.patch(
           `/admin/tickets/${ticketId}/cancel-complete`
@@ -143,8 +143,8 @@ const TicketLists = ({ type }: { type: string }) => {
     setTicketState(e.target.value);
     if (e.target.value === '결제 완료') {
       handleTicketStatus(ticketId, '결제 완료');
-    } else if (e.target.value === '취소 완료') {
-      handleTicketStatus(ticketId, '취소 완료');
+    } else if (e.target.value === '예매 취소') {
+      handleTicketStatus(ticketId, '예매 취소');
     }
   };
 
@@ -286,15 +286,20 @@ const TicketLists = ({ type }: { type: string }) => {
                 className="border-solid border-danger-10 border-[1px] rounded-xl px-2 py-4 cursor-pointer"
                 onChange={(e) => handleSelectedState(e, ticket.id)}
               >
-                <option value="결제 대기" disabled>
+                <option value="결제 대기" autoFocus>
                   결제 대기
                 </option>
                 <option value="결제 완료">결제 완료</option>
-                <option value="취소 요청" disabled>
-                  취소 요청
-                </option>
                 <option value="예매 취소">예매 취소</option>
               </select>
+              <button
+                className="px-3 py-2 bg-danger-10 cursor-pointer rounded-xl text-white"
+                onClick={() => {
+                  window.location.reload();
+                }}
+              >
+                변경
+              </button>
             </div>
           </AccordionDetails>
         </Accordion>
