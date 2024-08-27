@@ -68,7 +68,7 @@ const TicketLists = ({ type }: { type: string }) => {
   const [total, setTotal] = useRecoilState(totalTicket);
   const [members, setMembers] = useState<TicketMemberProps[][]>([]);
 
-  const [ticketState, setTicketState] = useState('');
+  const [ticketState, setTicketState] = useState<Record<number, string>>({});
 
   const getAllTicketList = async () => {
     try {
@@ -136,16 +136,19 @@ const TicketLists = ({ type }: { type: string }) => {
     }
   };
 
-  const handleSelectedState = (
+  const handleSelectedState = async (ticketId: number) => {
+    const status = ticketState[ticketId];
+    if (status) {
+      await handleTicketStatus(ticketId, status);
+      window.location.reload();
+    }
+  };
+
+  const handleChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
     ticketId: number
   ) => {
-    setTicketState(e.target.value);
-    if (e.target.value === '결제 완료') {
-      handleTicketStatus(ticketId, '결제 완료');
-    } else if (e.target.value === '예매 취소') {
-      handleTicketStatus(ticketId, '예매 취소');
-    }
+    setTicketState((prev) => ({ ...prev, [ticketId]: e.target.value }));
   };
 
   useEffect(() => {
@@ -284,7 +287,7 @@ const TicketLists = ({ type }: { type: string }) => {
               </div>
               <select
                 className="border-solid border-danger-10 border-[1px] rounded-xl px-2 py-4 cursor-pointer"
-                onChange={(e) => handleSelectedState(e, ticket.id)}
+                onChange={(e) => handleChange(e, ticket.id)}
               >
                 <option value="결제 대기" autoFocus>
                   결제 대기
@@ -294,9 +297,7 @@ const TicketLists = ({ type }: { type: string }) => {
               </select>
               <button
                 className="px-3 py-2 bg-danger-10 cursor-pointer rounded-xl text-white"
-                onClick={() => {
-                  window.location.reload();
-                }}
+                onClick={() => handleSelectedState(ticket.id)}
               >
                 변경
               </button>
