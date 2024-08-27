@@ -59,20 +59,20 @@ const page = () => {
 
   return (
     <div className="font-pretendard w-full h-full flex justify-center">
-      <div className="flex flex-col gap-10 items-center mt-[185px]">
-        <div className="w-[792px] h-[484px] rounded-xl">
-          <div className="bg-gray-90 h-[160px] relative z-0 rounded-t-xl">
+      <div className="flex flex-col gap-10 items-center mt-[185px] w-full">
+        <div className="w-full pad:w-[792px] h-[484px] rounded-xl">
+          <div className="bg-gray-90 h-[160px] relative flex justify-center items-center z-0 pad:rounded-t-xl">
             <Image
               src={bg_logo}
               alt="bg-logo"
               height={136}
-              className="opacity-50 fill-gray-0 absolute top-[43px] z-10"
+              className="opacity-50 fill-gray-0 absolute top-[43px] z-10 overflow-hidden"
             />
-            <p className="font-mustica absolute top-[37px] left-[299px] text-center text-[64px] font-semibold text-gray-0">
+            <p className="font-mustica text-center text-[64px] font-semibold text-gray-0">
               Admin
             </p>
           </div>
-          <div className="font-pretendard w-full h-[324px] flex flex-col items-center justify-center border-solid border-[1px] border-gray-15 rounded-b-xl">
+          <div className="font-pretendard w-full h-[324px] flex flex-col items-center justify-center pad:border-solid pad:border-[1px] pad:border-gray-15 pad:rounded-b-xl">
             <form>
               <div className="mb-[40px] flex flex-col gap-2">
                 <span className="text-xl font-semibold text-gray-90">ID</span>
@@ -82,7 +82,7 @@ const page = () => {
                   value={email}
                   onChange={handleEmail}
                   placeholder="ID를 입력해주세요."
-                  className="w-[588px] h-12 rounded-xl border-solid border-[1px] border-gray-15 pl-4 placeholder:text-base placeholder:text-gray-20 placeholder:font-normal"
+                  className="min-w-[282px] pad:w-[588px] h-12 rounded-xl border-solid border-[1px] border-gray-15 pl-4 placeholder:text-base placeholder:text-gray-20 placeholder:font-normal"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -95,7 +95,7 @@ const page = () => {
                   value={password}
                   onChange={handlePassword}
                   placeholder="비밀번호를 입력해주세요."
-                  className="w-[588px] h-12 rounded-xl border-solid border-[1px] border-gray-15 pl-4 placeholder:text-base placeholder:text-gray-20 placeholder:font-normal"
+                  className="min-w-[282px] pad:w-[588px] h-12 rounded-xl border-solid border-[1px] border-gray-15 pl-4 placeholder:text-base placeholder:text-gray-20 placeholder:font-normal"
                   onKeyDown={handleKeyDown}
                 />
               </div>
@@ -103,7 +103,7 @@ const page = () => {
           </div>
         </div>
         <div
-          className="w-[384px] h-[59px] bg-gray-5 rounded-xl flex justify-center items-center cursor-pointer"
+          className="min-w-[328px] min-h-[52px] pad:w-[384px] pad:h-[59px] bg-gray-5 rounded-xl flex justify-center items-center cursor-pointer"
           onClick={handleLogin}
         >
           <span className="font-pretendard text-gray-60 text-center text-lg font-medium">

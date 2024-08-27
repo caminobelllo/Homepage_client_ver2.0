@@ -30,6 +30,9 @@ export default function RootLayout({
   const isNoticePage = pathname === '/recruit/notice';
   const isApplyCompletePage = pathname === '/recruit/complete';
   const isApplyPage = pathname === '/recruit/apply';
+  const isLoginPage = pathname === '/login';
+  const isAdminApplicantPage = pathname === '/admin/applicant';
+  const isAdminTicketingPage = pathname === '/admin/ticketing';
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -75,6 +78,9 @@ export default function RootLayout({
             !isNoticePage &&
             !isApplyCompletePage &&
             !isApplyPage &&
+            !isLoginPage &&
+            !isAdminApplicantPage &&
+            !isAdminTicketingPage &&
             !(isMobile && isTicketPage) && <Footer />}
         </body>
       </html>
