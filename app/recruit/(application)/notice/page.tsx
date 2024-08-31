@@ -9,7 +9,7 @@ import {
   formatMonth,
   formatYear,
   getOnlyNum,
-  Recruiting23rd,
+  DynamicRecruitingInfo,
 } from '@/components/data/RecruitingInfo';
 
 const page = () => {
@@ -76,10 +76,10 @@ const Activity = () => {
       </p>
       <ul className="text-[16px] pad:text-[18px] text-gray-60 text-left mt-2 list-outside list-disc ml-[18px]">
         <li>
-          홍익대학교 깔루아 {getOnlyNum(Recruiting23rd.num)}기의 활동 기간은 1년
-          6개월로, {formatYear(Recruiting23rd.activityPeriod)}년{' '}
-          {formatMonth(Recruiting23rd.activityPeriod)}월 공연까지 필수로
-          참여해야 합니다.
+          홍익대학교 깔루아 {getOnlyNum(DynamicRecruitingInfo.num)}기의 활동
+          기간은 1년 6개월로, {formatYear(DynamicRecruitingInfo.activityPeriod)}
+          년 {formatMonth(DynamicRecruitingInfo.activityPeriod)}월 공연까지
+          필수로 참여해야 합니다.
         </li>
         <li>
           깔루아는 공연이 있는 3월, 9월을 제외하고 매달 1만원의 회비를 냅니다.
@@ -87,8 +87,8 @@ const Activity = () => {
           위한 비용으로 사용됩니다.
         </li>
         <li>
-          홍익대학교 깔루아 {getOnlyNum(Recruiting23rd.num)}기는 매주 월요일
-          오후 6시 오프라인으로 정기 회의와 뒷풀이가 진행됩니다.
+          홍익대학교 깔루아 {getOnlyNum(DynamicRecruitingInfo.num)}기는 매주
+          월요일 오후 6시 오프라인으로 정기 회의와 뒷풀이가 진행됩니다.
         </li>
         <li>활동 장소는 홍익대학교 T동 건물입니다.</li>
       </ul>
@@ -124,9 +124,9 @@ const OtherSessionNotice = () => {
       <ul className="text-[16px] pad:text-[18px] text-gray-60 text-left mt-2 list-outside list-disc ml-[18px]">
         <li>별도의 지원 영상이 필요하지 않습니다.</li>
         <li>
-          {formatMonth(Recruiting23rd.audition)}월{' '}
-          {formatDay(Recruiting23rd.audition)}일 진행되는 오디션에만 참여하시면
-          됩니다.
+          {formatMonth(DynamicRecruitingInfo.audition)}월{' '}
+          {formatDay(DynamicRecruitingInfo.audition)}일 진행되는 오디션에만
+          참여하시면 됩니다.
         </li>
       </ul>
     </div>

@@ -79,7 +79,7 @@ export const recruitingInfo = (
   };
 };
 
-const dynamicRecruitingInfo = recruitingInfo(
+export const DynamicRecruitingInfo = recruitingInfo(
   '23rd',
   '2024-03-01T00:00:00+09:00', // 모집 시작일
   '2024-03-07T23:59:00+09:00', // 모집 마감일
@@ -87,7 +87,5 @@ const dynamicRecruitingInfo = recruitingInfo(
   '2024-03-11T16:00:00+09:00', // 면접 날짜
   '2024-03-11T19:00:00+09:00', // 면접 후 모임 날짜
   '2024-03-15T10:00:00+09:00', // 발표 날짜
-  '2026-09-01T18:00:00+09:00' // 활동 기간
+  '2025-09-01T18:00:00+09:00' // 활동 기간
 );
-
-export const Recruiting23rd: recruitingInformation = dynamicRecruitingInfo;

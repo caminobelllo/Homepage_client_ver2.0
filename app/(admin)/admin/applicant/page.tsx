@@ -9,6 +9,11 @@ import { useRouter } from 'next/navigation';
 import { authInstance } from '@/api/auth/axios';
 import { totalApplicant } from '@/atoms';
 import { useRecoilState } from 'recoil';
+import {
+  DynamicRecruitingInfo,
+  recruitingInfo,
+} from '@/components/data/RecruitingInfo';
+import PublishIcon from '@mui/icons-material/Publish';
 
 interface ApplicantProps {
   id: number;
@@ -34,6 +39,29 @@ const page = () => {
   const [shownList, setShownList] = useState<ApplicantProps[]>([]);
   const [total, setTotal] = useRecoilState(totalApplicant);
   const [showMore, setShowMore] = useState(false);
+
+  const getList = async () => {
+    try {
+      const response = await authInstance.get('/admin/tickets/download', {
+        responseType: 'blob',
+      });
+      console.log(response.data);
+
+      const blob = response.data;
+
+      const fileObjectUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = fileObjectUrl;
+      link.style.display = 'none';
+
+      link.download = 'applicant_list.xlsx';
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(fileObjectUrl);
+    } catch (error: any) {}
+  };
 
   const handleMore = () => {
     setShowMore(!showMore);
@@ -98,12 +126,18 @@ const page = () => {
             <span className="font-mustica text-[40px] text-gray-90 font-semibold leading-10 pb-[15px]">
               Applicant
             </span>
-            <section className="flex gap-2 pb-10">
+            <section className="flex gap-2 pb-10 items-center">
               <span className="font-pretendard text-2xl text-gray-90 font-semibold leading-9">
-                24기 지원자 정보
+                {DynamicRecruitingInfo.num}기 지원자 정보
               </span>
               <span className="font-pretendard text-2xl text-primary-50 font-semibold leading-9">
                 {total}
+              </span>
+              <span
+                className="w-4 px-4 cursor-pointer"
+                onClick={() => getList()}
+              >
+                <PublishIcon sx={{ color: '#757A95' }} />
               </span>
             </section>
             <section className="w-[504px] h-8 rounded-[32px] bg-gray-0">

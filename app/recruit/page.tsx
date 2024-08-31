@@ -19,7 +19,7 @@ import {
   formatTime,
   formatYear,
   getOnlyNum,
-  Recruiting23rd,
+  DynamicRecruitingInfo,
 } from '@/components/data/RecruitingInfo';
 
 const page = () => {
@@ -31,8 +31,8 @@ const page = () => {
     nowDate.toLocaleString('en-US', { timeZone: 'Asia/Seoul' })
   );
   const isDays =
-    nowKoreanTime >= Recruiting23rd.recruitingStartDate &&
-    nowKoreanTime <= Recruiting23rd.recruitingFinishDate;
+    nowKoreanTime >= DynamicRecruitingInfo.recruitingStartDate &&
+    nowKoreanTime <= DynamicRecruitingInfo.recruitingFinishDate;
 
   // redering과정에서 document를 사용할 수 없어서 발생하는 문제 해결
   useEffect(() => {
@@ -53,11 +53,11 @@ const page = () => {
             <Image src={logo_white} fill alt="logo" sizes="100vw" />
           </div>
           <p className="text-[20px] pad:text-[24px] font-semibold dt:text-[32px] mt-8">
-            {Recruiting23rd.num} MEMBER RECRUITMENT
+            {DynamicRecruitingInfo.num} MEMBER RECRUITMENT
           </p>
           <p className="text-[16px] pad:text-[20px] dt:text-[24px] font-normal mt-[4px]">
-            {formatFullDate(Recruiting23rd.recruitingStartDate)} ~{' '}
-            {formatFullDate(Recruiting23rd.recruitingFinishDate)}
+            {formatFullDate(DynamicRecruitingInfo.recruitingStartDate)} ~{' '}
+            {formatFullDate(DynamicRecruitingInfo.recruitingFinishDate)}
           </p>
           <Link
             href={isInPeriod ? '/recruit/notice' : ''}
@@ -65,7 +65,7 @@ const page = () => {
             className={`flex justify-center items-center text-center w-full max-w-[384px] pad:w-[384px] h-[75px] rounded-[16px] mt-[72px] text-[18px] font-semibold bg-gray-90/30 border ${isInPeriod ? 'border-gray-0 text-gray-0 cursor-pointer' : 'border-gray-40 text-gray-40 cursor-not-allowed'}`}
           >
             {isInPeriod
-              ? `KAHLUA ${getOnlyNum(Recruiting23rd.num)}기 지원하기`
+              ? `KAHLUA ${getOnlyNum(DynamicRecruitingInfo.num)}기 지원하기`
               : '모집이 마감되었어요'}
           </Link>
         </div>
@@ -147,29 +147,29 @@ const Schedule = () => {
       <div className="inline-flex flex-wrap flex-row justify-center align-top mt-16 gap-6">
         <ScheduleCard
           title="서류 지원"
-          period={`~ ${formatMonthToDate(Recruiting23rd.recruitingFinishDate)} ${formatTime(Recruiting23rd.recruitingFinishDate)}`}
-          description={`보컬 영상 제출 마감<br/>${formatMonthToDate(Recruiting23rd.vocalApplyingDue)} ${formatTime(Recruiting23rd.vocalApplyingDue)}`}
+          period={`~ ${formatMonthToDate(DynamicRecruitingInfo.recruitingFinishDate)} ${formatTime(DynamicRecruitingInfo.recruitingFinishDate)}`}
+          description={`보컬 영상 제출 마감<br/>${formatMonthToDate(DynamicRecruitingInfo.vocalApplyingDue)} ${formatTime(DynamicRecruitingInfo.vocalApplyingDue)}`}
           titleClassName=""
           desClassName=""
         />
         <ScheduleCard
           title="오디션"
-          period={`~ ${formatMonthToDate(Recruiting23rd.audition)} ${formatTime(Recruiting23rd.audition)}`}
-          description={`오디션 뒷풀이<br/>당일 ${formatTime(Recruiting23rd.afterParty)}`}
+          period={`~ ${formatMonthToDate(DynamicRecruitingInfo.audition)} ${formatTime(DynamicRecruitingInfo.audition)}`}
+          description={`오디션 뒷풀이<br/>당일 ${formatTime(DynamicRecruitingInfo.afterParty)}`}
           titleClassName=""
           desClassName=""
         />
         <ScheduleCard
           title="최종 합격 발표"
-          period={`${formatMonthToDate(Recruiting23rd.announcementDate)}`}
+          period={`${formatMonthToDate(DynamicRecruitingInfo.announcementDate)}`}
           description="합격자/불합격자<br/>전체 개별 연락"
           titleClassName=""
           desClassName=""
         />
         <ScheduleCard
           title="24기 활동"
-          period={`~ ${formatYear(Recruiting23rd.activityPeriod)}.${formatMonth(Recruiting23rd.activityPeriod)}`}
-          description={`선발 직후부터<br/>${formatYear(Recruiting23rd.activityPeriod)}년 ${formatMonth(Recruiting23rd.activityPeriod)}월 정기공연까지`}
+          period={`~ ${formatYear(DynamicRecruitingInfo.activityPeriod)}.${formatMonth(DynamicRecruitingInfo.activityPeriod)}`}
+          description={`선발 직후부터<br/>${formatYear(DynamicRecruitingInfo.activityPeriod)}년 ${formatMonth(DynamicRecruitingInfo.activityPeriod)}월 정기공연까지`}
           titleClassName="bg-primary-50"
           desClassName="text-primary-10"
         />
