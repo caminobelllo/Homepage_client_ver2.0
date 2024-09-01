@@ -87,22 +87,28 @@ const TicketOption: React.FC<TicketOptionProps> = ({ isDays }) => {
           </div>
         </div>
       </div>
-      <Link
-        href={
-          freshman === true
-            ? 'ticket/freshman_ticket/'
-            : 'ticket/general_ticket/'
-        }
-        className={`mt-[24px] w-[280px] h-[60px] flex flex-shrink-0 text-center justify-center items-center ml-auto rounded-xl text-[18px] font-medium 
-          ${isDays ? '' : 'cursor-default'}
-                ${
-                  active == true
-                    ? 'text-gray-0 bg-primary-50'
-                    : 'text-gray-40 bg-gray-10'
-                }`}
-      >
-        예매하기
-      </Link>
+      {active ? (
+        <Link
+          href={
+            freshman === true
+              ? 'ticket/freshman_ticket/'
+              : 'ticket/general_ticket/'
+          }
+          className={`mt-[24px] w-[280px] h-[60px] flex flex-shrink-0 text-center justify-center items-center ml-auto rounded-xl text-[18px] font-medium 
+      ${isDays ? '' : 'cursor-default'}
+      ${'text-gray-0 bg-primary-50'}
+    `}
+        >
+          예매하기
+        </Link>
+      ) : (
+        <div
+          className={`mt-[24px] w-[280px] h-[60px] flex flex-shrink-0 text-center justify-center items-center ml-auto rounded-xl text-[18px] font-medium cursor-default
+      text-gray-40 bg-gray-10`}
+        >
+          예매하기
+        </div>
+      )}
     </div>
   );
 };
