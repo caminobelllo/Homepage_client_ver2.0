@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import TicketDetails from './TicketDetails';
 import clsx from 'clsx';
 import { information } from '../data/Information';
+import { info } from 'console';
 
 interface Option {
   value: string;
@@ -136,12 +137,16 @@ const DropDownBox: React.FC<DropDownBoxProps> = ({
                   <button
                     type="button"
                     className="w-full text-start focus:outline-none flex justify-start hover:bg-gray-200 py-4"
-                    onClick={() => handleOptionClick(option.value)}
+                    onClick={
+                      information.isDays
+                        ? () => handleOptionClick(option.value)
+                        : undefined
+                    }
                     disabled={option.status === 'INACTIVE'}
                   >
                     <p
                       className={clsx(
-                        option.status === 'ACTIVE' || type === 'date'
+                        information.isDays || type === 'date'
                           ? 'text-gray-60'
                           : 'text-gray-30'
                       )}
@@ -153,21 +158,17 @@ const DropDownBox: React.FC<DropDownBoxProps> = ({
                         <p
                           className={clsx(
                             'ml-2 text-[14px]',
-                            option.status === 'INACTIVE'
-                              ? 'text-gray-30'
-                              : 'text-primary-50'
+                            information.isDays
+                              ? 'text-primary-50'
+                              : 'text-gray-30'
                           )}
                         >
-                          {option.status === 'ACTIVE'
-                            ? '예매 가능'
-                            : '예매 불가'}
+                          {information.isDays ? '예매 가능' : '예매 불가'}
                         </p>
                         <p
                           className={clsx(
                             'ml-auto text-[16px]',
-                            option.status === 'ACTIVE'
-                              ? 'text-gray-60'
-                              : 'text-gray-30'
+                            information.isDays ? 'text-gray-60' : 'text-gray-30'
                           )}
                         >
                           {option.value === '신입생 티켓' ? '무료' : '5,000원'}

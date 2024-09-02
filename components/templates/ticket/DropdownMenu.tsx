@@ -91,7 +91,13 @@ const DropdownMenu = ({ isDays }: TicketOptionProps) => {
       </div>
 
       <div
-        onClick={dropdownOpen ? handleReserveClick : toggleDropdown}
+        onClick={
+          isDays
+            ? dropdownOpen
+              ? handleReserveClick
+              : toggleDropdown
+            : toggleDropdown
+        }
         className={`relative z-10 w-[328px] h-[52px] flex flex-shrink-0 text-center justify-center items-center mt-4 mx-auto rounded-xl text-[18px] font-medium cursor-pointer
             ${active ? 'text-gray-0 bg-primary-50' : 'text-gray-40 bg-gray-10'}
         `}
