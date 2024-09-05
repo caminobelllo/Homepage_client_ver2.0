@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import AdminHeader from '@/components/admin/AdminHeader';
 import './globals.css';
 
+import * as gtag from '../libs/gtag';
+
 const roboto = Roboto({
   weight: '400',
   subsets: ['latin'],
@@ -50,6 +52,18 @@ export default function RootLayout({
     <>
       <html lang="en">
         <head>
+          {/*<!-- Google tag (gtag.js) -->*/}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gtag.GA_TRACKING_ID}');
+              `,
+            }}
+          />
           <meta property="og:title" content="KAHLUA BAND" />
           <meta
             property="og:description"
