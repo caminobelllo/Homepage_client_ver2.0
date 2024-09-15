@@ -41,7 +41,7 @@ const Page = () => {
   }, [isDays]);
 
   useEffect(() => {
-    setIsDays(information.isDays);
+    setIsDays(true);
   }, []);
 
   useEffect(() => {

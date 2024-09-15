@@ -74,7 +74,7 @@ const { eventDate, lastReserveDate } = createEventDates(
 
 const getInformation = (): Information => {
   const nowKoreanTime = dayjs().tz('Asia/Seoul').toDate();
-  const isDays = nowKoreanTime < lastReserveDate;
+  const isDays = true;
 
   return {
     title: '2024년 9월 정기 공연',

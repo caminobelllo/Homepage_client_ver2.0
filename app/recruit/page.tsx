@@ -39,7 +39,7 @@ const page = () => {
     document.addEventListener('scroll', () => {
       setIsScrolled(true);
     });
-    setIsInPeriod(isDays);
+    setIsInPeriod(true);
   }, []);
 
   return (
